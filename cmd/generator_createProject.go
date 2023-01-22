@@ -61,7 +61,7 @@ func installDependencies(path string) {
 }
 
 func createDirectories(path string) {
-	folders := []string{"cmd", "internal", "internal\\controllers", "internal\\middlewares", "web", "web\\templates", "web\\static"}
+	folders := []string{"cmd", "cmd\\app", "internal", "internal\\resolve", "internal\\controllers", "internal\\middlewares", "web", "web\\templates", "web\\static"}
 	for _, folder := range folders {
 		err := os.Mkdir(path+"\\"+folder, 0777)
 		if err != nil {
@@ -73,7 +73,7 @@ func createDirectories(path string) {
 }
 
 func createFiles(path string) {
-	file, _ := os.Create(path + "\\cmd\\main.go")
+	file, _ := os.Create(path + "\\cmd\\app\\main.go")
 	_, err := file.Write([]byte(BaseApplication))
 	if err != nil {
 		ErrorMessage("Error while creating file: " + err.Error())

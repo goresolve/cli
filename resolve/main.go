@@ -16,4 +16,8 @@ func main() {
 	if args[1] == "create" {
 		cmd.CreateProject()
 	}
+
+	if (args[1] == "generate" || args[1] == "g") && (args[2] == "controller" || args[2] == "co") {
+		cmd.CreateController(args[3])
+	}
 }
