@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/goresolve/cli/resolve/cmd"
+	"github.com/goresolve/cli/cmd"
 	"os"
 )
 
