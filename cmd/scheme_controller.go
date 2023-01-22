@@ -20,7 +20,7 @@ func delete(c *resolve.Ctx) {
 	// implement your logic here
 }`
 
-const ControllerScheme = `package {{.Name}}
+const ControllerScheme = `package {{.ControllerName}}
 
 import "github.com/goresolve/resolve"
 

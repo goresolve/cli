@@ -60,7 +60,7 @@ func createService(name string) {
 		LogMessage("File " + fileName(name) + ".service.go created successfully.\n")
 	}
 
-	err = tmpl.Execute(file, map[string]string{"Name": fileName(name)})
+	err = tmpl.Execute(file, map[string]string{"Name": pathName(name)})
 }
 
 func createController(name string) {
@@ -76,5 +76,5 @@ func createController(name string) {
 		LogMessage("File " + fileName(name) + ".controller.go created successfully.\n")
 	}
 
-	err = tmpl.Execute(file, map[string]string{"Name": fileName(name)})
+	err = tmpl.Execute(file, map[string]string{"Name": fileName(name), "ControllerName": pathName(name)})
 }
