@@ -15,5 +15,6 @@ go get github.com/goresolve/cli/resolve
 resolve - will show application help
 
 resolve create - will activate project creation wizard
+resolve generate controller <name> - will create a controller with the specified name.
 ```
 
