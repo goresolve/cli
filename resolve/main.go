@@ -10,6 +10,7 @@ func main() {
 	if len(args) < 2 {
 		cmd.Message("[Resolve CLI]", "Command not found. List of available commands:\n")
 		cmd.Message("[Resolve CLI]", "resolve create | Project creation wizard. Sets the dependencies and creates folders.\n")
+		cmd.Message("[Resolve CLI]", "resolve generate controller <name> | Creates a controller with the specified name.\n")
 		return
 	}
 
