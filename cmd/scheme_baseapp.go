@@ -1,4 +1,4 @@
-package schemes
+package cmd
 
 const BaseApplication = `package main
 

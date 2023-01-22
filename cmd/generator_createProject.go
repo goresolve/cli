@@ -1,53 +1,51 @@
-package generator
+package cmd
 
 import (
 	"fmt"
-	"github.com/goresolve/cli/resolve/schemes"
-	"github.com/goresolve/cli/resolve/utils"
 	"os"
 	"os/exec"
 )
 
 func createDir() string {
-	utils.LogMessage("Enter folder name to create project: ")
+	LogMessage("Enter folder name to create project: ")
 
 	var path string
 	_, err := fmt.Scanln(&path)
 	if err != nil {
-		utils.ErrorMessage("Error while reading folder name: " + err.Error())
+		ErrorMessage("Error while reading folder name: " + err.Error())
 	}
 
 	err = os.Mkdir(path, 0777)
 	if err != nil {
-		utils.ErrorMessage("Error while creating folder: " + err.Error())
+		ErrorMessage("Error while creating folder: " + err.Error())
 	} else {
-		utils.LogMessage("Folder created successfully.\n")
+		LogMessage("Folder created successfully.\n")
 	}
 
 	finalPath, err := os.Getwd()
 	if err != nil {
-		utils.ErrorMessage("Error while getting current directory: " + err.Error())
+		ErrorMessage("Error while getting current directory: " + err.Error())
 	}
 
 	return finalPath + "\\" + path
 }
 
 func createMod(path string) {
-	utils.LogMessage("Enter module name to create go.mod file: ")
+	LogMessage("Enter module name to create go.mod file: ")
 
 	var module string
 	_, err := fmt.Scanln(&module)
 	if err != nil {
-		utils.ErrorMessage("Error while reading folder name: " + err.Error())
+		ErrorMessage("Error while reading folder name: " + err.Error())
 	}
 
 	modCreate := exec.Command("go", "mod", "init", module)
 	modCreate.Dir = path
 	err = modCreate.Run()
 	if err != nil {
-		utils.ErrorMessage("Error while creating go.mod file: " + err.Error())
+		ErrorMessage("Error while creating go.mod file: " + err.Error())
 	} else {
-		utils.LogMessage("go.mod file created successfully.\n")
+		LogMessage("go.mod file created successfully.\n")
 	}
 }
 
@@ -56,9 +54,9 @@ func installDependencies(path string) {
 	getPackage.Dir = path
 	err := getPackage.Run()
 	if err != nil {
-		utils.ErrorMessage("Error while installing dependencies: " + err.Error())
+		ErrorMessage("Error while installing dependencies: " + err.Error())
 	} else {
-		utils.LogMessage("Dependencies installed successfully.\n")
+		LogMessage("Dependencies installed successfully.\n")
 	}
 }
 
@@ -67,18 +65,18 @@ func createDirectories(path string) {
 	for _, folder := range folders {
 		err := os.Mkdir(path+"\\"+folder, 0777)
 		if err != nil {
-			utils.ErrorMessage("Error while creating folder: " + err.Error())
+			ErrorMessage("Error while creating folder: " + err.Error())
 		} else {
-			utils.LogMessage("Folder " + folder + " created successfully.\n")
+			LogMessage("Folder " + folder + " created successfully.\n")
 		}
 	}
 }
 
 func createFiles(path string) {
 	file, _ := os.Create(path + "\\cmd\\main.go")
-	_, err := file.Write([]byte(schemes.BaseApplication))
+	_, err := file.Write([]byte(BaseApplication))
 	if err != nil {
-		utils.ErrorMessage("Error while creating file: " + err.Error())
+		ErrorMessage("Error while creating file: " + err.Error())
 	}
 }
 

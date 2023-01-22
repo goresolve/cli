@@ -1,4 +1,4 @@
-module github.com/goresolve/cli/resolve
+module github.com/goresolve/cli
 
 go 1.19
 
